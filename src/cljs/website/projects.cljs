@@ -19,7 +19,7 @@
   [:div (for [line (string/split-lines text)] [:p line])])
 
 (defn tag-component [tags]
-  [:div (map (fn [tag] [:span tag]) tags)])
+  [:div (map (fn [tag] [:a {:href (str "#/search/tag/" tag)} tag]) tags)])
 
 (defn post [{:keys [title tags text publish-date]} project]
   [:div [:h2 title]

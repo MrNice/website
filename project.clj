@@ -20,6 +20,7 @@
                  [environ "1.0.0"]
                  [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [cljsjs/moment "2.9.0-0"]
+                 [datascript "0.11.1"]
                  [secretary "1.2.3"]]
 
   :plugins [[lein-ring "0.9.1"]

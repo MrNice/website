@@ -6,17 +6,13 @@
               [goog.history.EventType :as EventType]
               [cljsjs.react :as react]
               [website.common :as common]
+              [website.blog :as blog :refer [blog-page]]
+              [website.goals :as goals :refer [goals-page]]
+              [website.search :as search :refer [search-page]]
+              [website.resume :as resume :refer [resume-page]]
               [website.projects :as projects :refer [projects-page]]
               [clojure.string :as string])
     (:import goog.History))
-
-(defn blog-page [] [common/header])
-
-(defn goals-page [] [common/header])
-
-(defn resume-page []
-  [:div [common/header]
-   [:p "There is much to be learned"]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -28,18 +24,23 @@
 (secretary/defroute "/" []
   (session/put! :current-page #'projects-page))
 
-(secretary/defroute "/projects" []
+(secretary/defroute projects-path "/projects" []
   (session/put! :current-page #'projects-page))
 
-(secretary/defroute "/goals" []
+(secretary/defroute goal-path "/goals" []
   (session/put! :current-page #'goals-page))
 
-(secretary/defroute "/blog" []
+(secretary/defroute blog-path "/blog" {:as params}
   (session/put! :current-page #'blog-page))
 
+(secretary/defroute "/blog/:year/:month" {:as params}
+  (session/put! :current-page #'blog-page))
+;; #'blog-page = (var blog-page)
 (secretary/defroute "/resume" []
   (session/put! :current-page #'resume-page))
 
+(secretary/defroute "/search/:type/:value" {:as params}
+  (session/put! :current-page #'search-page))
 
 ;; -------------------------
 ;; History
