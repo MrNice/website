@@ -1,6 +1,8 @@
+* {-webkit-padding-start: 0px;}
+
 body {
-  font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
-  max-width: 600px;
+  font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif;
+  max-width: 750px;
   margin: 0 auto;
   padding-top: 72px;
   -webkit-font-smoothing: antialiased;
@@ -12,6 +14,7 @@ body {
 h1, h2, h3 {
   color: #000;
 }
+
 h1 {
   font-size: 2.5em
 }
@@ -31,4 +34,56 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Aliases for Flex */
+.flex-space-around {
+  justify-content: space-around;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+/* Common */
+.header {
+  list-style-type: none;
+  font-family: "Open Sans", Verdana;
+  font-size: 1.25em;
+}
+
+.heading {
+  font-weight: lighter;
+}
+
+/* Blogs */
+.post {
+  font-family: "Open Sans", Verdana;
+}
+
+.post-title {
+  font-weight: lighter;
+}
+
+/* Resume */
+.resume p, span, li {
+  font-size: 0.9em;
+}
+
+.resume-title {
+  font-weight: lighter;
+  text-align: center;
+}
+
+.technologies {
+  font-size: 0.8em;
+}
+
+.contact-info {
+  list-style-type: none;
 }

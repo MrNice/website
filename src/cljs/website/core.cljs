@@ -5,6 +5,7 @@
               [goog.events :as events]
               [goog.history.EventType :as EventType]
               [cljsjs.react :as react]
+              [dommy.core :as dommy :refer-macros [sel1]]
               [website.common :as common]
               [website.blog :as blog :refer [blog-page]]
               [website.goals :as goals :refer [goals-page]]
@@ -13,6 +14,14 @@
               [website.projects :as projects :refer [projects-page]]
               [clojure.string :as string])
     (:import goog.History))
+
+(enable-console-print!)
+
+(defn page-width! [width]
+  "Set body width, used because resume-page must be wider"
+  (if (number? width)
+    (dommy/set-style! (sel1 :body) :width (str width "px"))
+    (recur 600)))
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -50,6 +59,10 @@
     (events/listen
      EventType/NAVIGATE
      (fn [event]
+       ;; Inelegant hack to allow resume to be wider
+       (if (= (.-token event) "/resume")
+         (page-width! 750)
+         (page-width! 600))
        (secretary/dispatch! (.-token event))))
     (.setEnabled true)))
 

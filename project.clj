@@ -17,6 +17,8 @@
                  [prone "0.8.1"]
                  [compojure "1.3.3"]
                  [hiccup "1.0.5"]
+                 [garden "1.2.5"]
+                 [prismatic/dommy "1.1.0"]
                  [environ "1.0.0"]
                  [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [cljsjs/moment "2.9.0-0"]
@@ -40,7 +42,8 @@
 
   :minify-assets
   {:assets
-    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
+    {"resources/public/css/site.min.css" "resources/public/css/site.css"
+     "resources/public/css/normalize.min.css" "resources/public/css/normalize.css"}}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
                              :compiler {:output-to     "resources/public/js/app.js"

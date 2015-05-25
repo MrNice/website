@@ -22,12 +22,13 @@
   [:div (map (fn [tag] [:a {:href (str "#/search/tag/" tag)} tag]) tags)])
 
 (defn post [{:keys [title tags text publish-date]} project]
-  [:div [:h2 title]
-        [tag-component tags]
-        [:p publish-date]
-        [format-post-body text]])
+  [:div.post
+    [:h2.post-title title]
+    [tag-component tags]
+    [:p publish-date]
+    [format-post-body text]])
 
 (defn blog-page []
-  [:div [common/header]
-        [:h1 "Blag"]
-        (map post @blogs)])
+  [:div
+    [common/heading "Blag"]
+    (map post @blogs)])

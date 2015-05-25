@@ -52,24 +52,67 @@
                     "Designed and built entire power systems, down to acid-etching PCB boards"
                     "Wrote C programs to efficiently manipulate hundreds of LEDs within 2kB of RAM"]}])
 
+(def educations
+  [{:where "Hack Reactor, Advanced Software Engineering Immersive"
+   :when "2014"
+   :bullet-points ["Learned Full-Stack JavaScript Engineering"
+                   "Focused on product vision and team dynamics"]}
+  {:where "Laney College, Mathematics"
+   :when "2013"}
+  {:where "Oakland Technical High School, Engineering Academy"
+   :when "2012"
+   :bullet-points ["Focused on Mechanical Engineering and Design, with Some Architecture"]}])
+
+(defn sub-heading [string]
+  [:div
+    [:h3.resume-title string] [:hr]])
+
+(defn contact-info []
+  [:ul.flex-container.flex-space-around.contact-info
+    [:li "San Francisco, CA"]
+    [:li "(510) 701-0876"]
+    [:li [:a {:href (str "mailto:" email)} email]]
+    [:li [:a {:href "https://github.com/mrnice"} "github.com/MrNice"]]])
+
+(defn commafy [list]
+  (apply str (interpose ", " list)))
+
+(defn skills-list [proficiencies]
+  [:div
+    [:h4 "Languages, Frameworks, Libraries:"]
+    [:p (str "Proficient: " (commafy (:proficient (:coding proficiencies))))]
+    [:p (str "Familiar: " (commafy (:familiar (:coding proficiencies))))]
+    [:h4 "Tools and Software"]
+    [:p (str "Awesome: " (commafy (:awesome (:tools proficiencies))))]
+    [:p (str "Capable: " (commafy (:capable (:tools proficiencies))))]])
+
+(defn project-component [{:keys [position where-or-what date-range main-technologies bullet-points]} project]
+  [:div
+    [:div.flex-container.flex-space-between
+      [:span (str position " - " where-or-what)]
+      [:span.technologies
+        (str "(" (apply str (interpose ", " main-technologies)) ")")]
+      [:span date-range]]
+    [:ul
+     (map #(identity [:li %]) bullet-points)]])
+
+(defn education-component [{:keys [where when bullet-points]} experience]
+  [:div
+    [:div.flex-container.flex-space-between
+      [:span where]
+      [:span when]]
+    [:ul
+     (map #(identity [:li %]) bullet-points)]])
 
 (defn resume-page []
-  [:div [common/header]
-    [:h2 "Nicholas van de Walle"]
-    [:ul
-      [:li "San Francisco, CA"]
-      [:li "(510) 701-0876"]
-      [:li [:a {:href (str "mailto:" email)} email]]
-      [:li [:a {:href "https://github.com/mrnice"} "github.com/MrNice"]]]
-    [:h3 "Programming & Maker Skills"]
-    [:hr]
-    [:h4 "Languages, Frameworks, Libraries:"]
-    [:p (str "Proficient: " (apply str (interpose ", " (:proficient (:coding proficiencies)))))]
-    [:p (str "Familiar: " (apply str (interpose ", " (:familiar (:coding proficiencies)))))]
-    [:h4 "Tools and Software"]
-    [:p (str "Awesome: " (apply str (interpose ", " (:awesome (:tools proficiencies)))))]
-    [:p (str "Capable: " (apply str (interpose ", " (:capable (:tools proficiencies)))))]
-    [:h3 "Projects and Positions"]
-    [:hr]
-
-    ])
+  [:div
+    (common/header)
+    [:h2.resume-title "Nicholas van de Walle"]
+    [:div.resume
+      (contact-info)
+      (sub-heading "Programming & Maker Skills")
+      (skills-list proficiencies)
+      (sub-heading "Projects and Positions")
+      (map project-component projects-positions)
+      (sub-heading "Education")
+      (map education-component educations)]])
