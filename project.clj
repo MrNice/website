@@ -20,6 +20,7 @@
                  [garden "1.2.5"]
                  [prismatic/dommy "1.1.0"]
                  [environ "1.0.0"]
+                 [markdown-clj "0.9.66"]
                  [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [cljsjs/moment "2.9.0-0"]
                  [datascript "0.11.1"]

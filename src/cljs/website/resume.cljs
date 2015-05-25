@@ -70,9 +70,8 @@
 (defn contact-info []
   [:ul.flex-container.flex-space-around.contact-info
     [:li "San Francisco, CA"]
-    [:li "(510) 701-0876"]
-    [:li [:a {:href (str "mailto:" email)} email]]
-    [:li [:a {:href "https://github.com/mrnice"} "github.com/MrNice"]]])
+    [:li [:a {:href "https://github.com/mrnice"} "github.com/MrNice"]]
+    [:li [:a {:href "/contact"} "Contact"]]])
 
 (defn commafy [list]
   (apply str (interpose ", " list)))
@@ -88,19 +87,19 @@
 
 (defn project-component [{:keys [position where-or-what date-range main-technologies bullet-points]} project]
   [:div
-    [:div.flex-container.flex-space-between
+    [:div.bold.flex-container.flex-space-between
       [:span (str position " - " where-or-what)]
-      [:span.technologies
+      [:span.technologies.italic
         (str "(" (apply str (interpose ", " main-technologies)) ")")]
-      [:span date-range]]
+      [:span.resume-tidbits.italic date-range]]
     [:ul
      (map #(identity [:li %]) bullet-points)]])
 
 (defn education-component [{:keys [where when bullet-points]} experience]
   [:div
-    [:div.flex-container.flex-space-between
+    [:div.bold.flex-container.flex-space-between
       [:span where]
-      [:span when]]
+      [:span.resume-tidbits.italic when]]
     [:ul
      (map #(identity [:li %]) bullet-points)]])
 

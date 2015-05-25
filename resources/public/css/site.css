@@ -52,6 +52,8 @@ a:hover {
 
 /* Common */
 .header {
+  /* TODO: Figure out why first secretary change alters layout w/o this line */
+  margin-top: 0px;
   list-style-type: none;
   font-family: "Open Sans", Verdana;
   font-size: 1.25em;
@@ -70,6 +72,14 @@ a:hover {
   font-weight: lighter;
 }
 
+.post-tags {
+  width: 40%;
+}
+
+.post-date {
+  color: #999;
+}
+
 /* Resume */
 .resume p, span, li {
   font-size: 0.9em;
@@ -82,6 +92,14 @@ a:hover {
 
 .technologies {
   font-size: 0.8em;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .contact-info {

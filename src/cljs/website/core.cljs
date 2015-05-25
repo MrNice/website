@@ -44,6 +44,7 @@
 
 (secretary/defroute "/blog/:year/:month" {:as params}
   (session/put! :current-page #'blog-page))
+
 ;; #'blog-page = (var blog-page)
 (secretary/defroute "/resume" []
   (session/put! :current-page #'resume-page))
