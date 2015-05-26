@@ -46,7 +46,7 @@
                     "Modified Django to produce static HTML pages from data stored in an excel spreadsheet"]}
    {:position "Lead Designer"
     :where-or-what "trip.wear"
-    :date-range "2014"
+    :date-range "2012"
     :main-technologies ["Arduino" "Total Control Lighting"]
     :bullet-points ["Designed articles of clothing with embedded RGBLED accents, powered by the Arduino platform"
                     "Designed and built entire power systems, down to acid-etching PCB boards"

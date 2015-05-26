@@ -6,7 +6,8 @@
 
   :source-paths ["src/clj" "src/cljs"]
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.7.0-beta2"]
+                 [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
@@ -21,9 +22,10 @@
                  [prismatic/dommy "1.1.0"]
                  [environ "1.0.0"]
                  [markdown-clj "0.9.66"]
-                 [org.clojure/clojurescript "0.0-3211" :scope "provided"]
+                 [rethinkdb "0.8.39"]
                  [cljsjs/moment "2.9.0-0"]
-                 [datascript "0.11.1"]
+                 [datascript "0.11.2"]
+                 [cljs-uuid "0.0.4"]
                  [secretary "1.2.3"]]
 
   :plugins [[lein-ring "0.9.1"]

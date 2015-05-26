@@ -17,7 +17,8 @@
 (defn heading [name]
   [:div
     [header]
-    [:h1.heading name]])
+    [:h1.heading name]
+    [:hr]])
 
 (defn tag-component [tags]
   (for [tag tags] [:span tag]))

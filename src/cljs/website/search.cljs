@@ -5,5 +5,5 @@
     (:import goog.History))
 
 (defn search-page []
-  [:div [common/header]
-        [:h1 "Search"]])
+  [:div
+    [common/heading "Search"]])
