@@ -26,17 +26,18 @@
 (d/transact! conn posts)
 
 (def q-projects-all
-  '[:find ?e ?tags
+  '[:find   ?e
     :where [?e :post/tags ?tags]
            [(some #(= "project" %) ?tags)]])
 
-(def projects
-  (bind conn q-projects-all))
+;; (def projects
+;;   (bind conn q-projects-all))
 
+(comment
 (defn project-posts []
   (map blog/post @projects))
+  )
 
 (defn projects-page []
   [:div
-    (common/heading "Projects")
-    (project-posts)])
+    (common/heading "Projects")])
